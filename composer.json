@@ -1,0 +1,12 @@
+{
+	"name": "shineunited/wordpress",
+	"type": "metapackage",
+	"license": [
+		"MIT",
+		"GPL-2.0-or-later"
+	],
+	"require": {
+		"roots/wordpress-no-content": "self.version",
+		"shineunited/wordpress-installer": "*"
+	}
+}
