@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Import New Versions
+ *
+ * Runs on cron job.
+ * Only makes updates if there are versions to create or remove.
+ * Then it adds a reference to changelog, adds that change and moves all tags.
+ */
+
+include('inc/find-changes.php');
+include('inc/list-available-versions.php');
+include('inc/list-existing-tags.php');
+include('inc/update-tags.php');
+
+$versions = listAvailableVersions();
+$tags = listExistingTags();
+$changes = findChanges($versions, $tags);
+
+$hasCreateOrDelete = false;
+foreach($changes as $version => $change) {
+	if($change == 'create' || $change == 'delete') {
+		$hasCreateOrDelete = true;
+		break;
+	}
+}
+
+if(!$hasCreateOrDelete) {
+	echo 'No tags to create or delete, exiting...' . "\n";
+	exit(0);
+}
+
+echo 'Updating tags...' . "\n";
+updateTags($changes);
+
+exit(0);

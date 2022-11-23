@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Updates Existing Tags
+ *
+ * Runs on commit to main (except changelog).
+ * Creates and removes tags as necessary, updates changelog and push commit.
+ */
+
+include('inc/find-changes.php');
+include('inc/list-available-versions.php');
+include('inc/list-existing-tags.php');
+include('inc/update-tags.php');
+
+$versions = listAvailableVersions();
+$tags = listExistingTags();
+$changes = findChanges($versions, $tags);
+
+updateTags($changes);
+
+exit(0);

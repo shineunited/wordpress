@@ -1,2 +1,2 @@
 # wordpress
-Automatically update WordPress package
+Automatically updating WordPress package.
