@@ -10,6 +10,6 @@
 	],
 	"require": {
 		"roots/wordpress-no-content": "self.version",
-		"shineunited/wordpress-installer": "^1.0"
+		"shineunited/wordpress-installer": "^1.0.0"
 	}
 }
