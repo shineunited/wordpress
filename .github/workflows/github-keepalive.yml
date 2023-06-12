@@ -1,0 +1,19 @@
+name: GitHub Keepalive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  actions-keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Commit Keepalive
+        run: |
+          DATE=$(date)
+          git config --global user.name "Shine Admin"
+          git config --global user.email "admin@shineunited.com"
+          git commit --allow-empty -m "Keepalive: $DATE"
+          git push
