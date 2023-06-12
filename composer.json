@@ -5,8 +5,7 @@
 		"wordpress"
 	],
 	"license": [
-		"MIT",
-		"GPL-2.0-or-later"
+		"MIT"
 	],
 	"require": {
 		"roots/wordpress-no-content": "self.version",
